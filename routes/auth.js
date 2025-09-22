@@ -84,20 +84,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.get("users",async(req,res)=>{
 
-    try{
-
-        await connectMongo();
-        const users = User.find().select("-password");
-
-        res.status(200).json({users})
-
-    }catch(err){
-   res.status.json({message:"cannot find users"})
-    }
-
-})
 router.get("/users", async (req, res) => {
   try {
     await connectMongo();
