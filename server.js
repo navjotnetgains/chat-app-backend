@@ -21,7 +21,7 @@ const server = http.createServer(app);
 app.use(cors({
   origin: [
   "http://localhost:3000",                // local frontend
-  "https://chat-app-front-lime.vercel.app/"        // deployed frontend
+  "https://chat-app-front-lime.vercel.app"        // deployed frontend
 ], // frontend origin
   credentials: true,               // allow cookies to be sent
 }));
