@@ -18,14 +18,22 @@ import cors from "cors";
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://chat-app-front-lime.vercel.app"
+];
+
+// Apply CORS globally
 app.use(cors({
-  origin: [
-  "http://localhost:3000",                // local frontend
-  "https://chat-app-front-lime.vercel.app"        // deployed frontend
-], // frontend origin
-  credentials: true,               // allow cookies to be sent
+  origin: allowedOrigins,
+  credentials: true, // allow cookies
 }));
 
+// Handle preflight OPTIONS requests
+app.options("*", cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 
 app.use(express.json());
 app.use(cookieParser());
