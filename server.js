@@ -29,11 +29,7 @@ app.use(cors({
   credentials: true, // allow cookies
 }));
 
-// Handle preflight OPTIONS requests
-app.options("*", cors({
-  origin: allowedOrigins,
-  credentials: true,
-}));
+
 
 app.use(express.json());
 app.use(cookieParser());
