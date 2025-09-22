@@ -20,7 +20,7 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://chat-app-front-lime.vercel.app"
+  "https://chat-app-front-lime.vercel.app/"
 ];
 
 // Apply CORS globally
