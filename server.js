@@ -10,7 +10,7 @@ import http from "http";
 import cookieParser from "cookie-parser";
 import messageRoutes from "./routes/messages.js";
 import uploads from "./routes/uploads.js"
-import cors from "cors";
+import cors from "cors"; 
 
 // ✅ Load .env file so JWT_SECRET is available
 
@@ -20,7 +20,7 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://chat-app-front-lime.vercel.app/"
+  "https://chat-app-front-lime.vercel.app"
 ];
 
 // Apply CORS globally
@@ -29,6 +29,7 @@ app.use(cors({
   credentials: true, // allow cookies
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true 
 }));
 
 

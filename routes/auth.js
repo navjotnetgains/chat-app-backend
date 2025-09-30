@@ -15,7 +15,12 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Enter email and password" });
     }
 
-    await connectMongo();
+    try {
+  await connectMongo();
+} catch (err) {
+  console.error("MongoDB connection failed:", err.message);
+  return res.status(500).json({ message: "Database connection failed" });
+}
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
