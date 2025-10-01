@@ -1,4 +1,4 @@
-import WebSocket, { WebSocketServer } from "ws";
+import Websocket,{ WebSocketServer } from "ws";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
@@ -18,19 +18,14 @@ import cors from "cors";
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://chat-app-front-lime.vercel.app"
-];
+const corsOptions = {
+  origin: process.env.ORIGIN,            // Only allow this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],         // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed request headers
+  credentials: true                                  // Allow cookies or other credentials
+};
 
-// Apply CORS globally
-app.use(cors({
-  origin: "*",
-  credentials: true, // allow cookies
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  
-}));
+app.use(cors(corsOptions));
 
 
 
