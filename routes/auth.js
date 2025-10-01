@@ -104,7 +104,7 @@ router.get("/users", async (req, res) => {
 // ✅ GET /api/session
 router.get("/session", async (req, res) => {
   try {
-    const token = req.cookies.token;
+    const token = await req.cookies.token;
     console.log(token)
     if (!token) {
       return res.status(200).json({ user: null, token: null });
