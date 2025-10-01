@@ -40,8 +40,8 @@ router.post("/login", async (req, res) => {
     // ✅ Set cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // 🔑 set to true in production (HTTPS)
-      sameSite: "lax", // 🔑 allow frontend (localhost:3000) to receive cookie
+      secure: process.env.SECURE, // 🔑 set to true in production (HTTPS)
+      sameSite: process.env.SAMESITE, // 🔑 allow frontend (localhost:3000) to receive cookie
       maxAge: 1000 * 60 * 60 * 24 * 7, // 1 year
       path: "/",
     });
